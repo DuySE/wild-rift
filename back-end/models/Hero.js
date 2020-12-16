@@ -6,5 +6,5 @@ const heroSchema = new Schema({
     profile_image: String
 })
 
-const Hero = mongoose.model("Hero", heroSchema, "hero");
+const Hero = mongoose.model("Hero", heroSchema, "heroes");
 module.exports = Hero;
