@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Hero = require("../models/Hero");
 
-router.get("/heroes", async (req, res) => {
+router.get("/api/heroes/", async (req, res) => {
   try {
     const heroes = await Hero.find();
     res.json(heroes)
@@ -12,7 +12,7 @@ router.get("/heroes", async (req, res) => {
 });
 
 
-router.get("/heroes/:name/", async (req, res) => {
+router.get("/api/heroes/:name/", async (req, res) => {
   try {
     const hero = await Hero.findOne({'name': req.params.name});
     res.json(hero)
