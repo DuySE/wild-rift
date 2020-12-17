@@ -2,11 +2,12 @@ import {connect} from "react-redux";
 
 import
 {
-     actions as heroesActions,
-     selectors as heroesSelectors
-} from "../reducers/heroes"
+    actions as heroesActions,
+    selectors as heroesSelectors
+} from "../../reducers/heroes"
 
-import Heroes from '../components/heroes'
+import HeroList from '../../components/HeroList'
+
 
 const mapStateToProps = state => ({
     file: heroesSelectors.getFile(state),
@@ -42,4 +43,5 @@ const mapDispatchToProps = {
     handleGetOne: heroesActions.handleGetOne,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Heroes)
+export default connect(mapStateToProps, mapDispatchToProps)(HeroList)
+
