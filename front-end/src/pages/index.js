@@ -6,8 +6,9 @@ import HeroListPage from './HeroListPage';
 
  const Routes = () => (
     <Switch>
-        <Route path="/heroes" component={HeroListPage} />
         <Route path="/heroes/:name" component={HeroDetailPage} />
+        <Route path="/heroes" component={HeroListPage} />
+
     </Switch>
 );
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import 'antd/dist/antd.css';
-import { Row, Col, Image, Table, Space, Tag } from 'antd';
+import {Row, Col, Image, Table } from 'antd';
+import { Layout } from 'antd';
+const { Header, Content } = Layout;
 
 class HeroDetail extends Component {
 
@@ -72,8 +74,12 @@ class HeroDetail extends Component {
         }
 
         return (
-            <div>
-                <h1> Champion: {heroes.display_name} </h1>
+            <Layout>
+                <Header>
+                    <h1><font color="white"> Champion: {heroes.display_name} </font></h1>
+                </Header>
+
+                <Content>
                 <Row>
 
                     <Col span={18} push={6}>
@@ -87,7 +93,8 @@ class HeroDetail extends Component {
 
                     </Col>
                 </Row>
-            </div>
+                </Content>
+            </Layout>
         )
     }
 }
