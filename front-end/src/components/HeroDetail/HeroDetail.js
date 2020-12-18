@@ -76,7 +76,7 @@ class HeroDetail extends Component {
         return (
             <Layout>
                 <Header>
-                    <h1><font color="white"> Champion: {heroes.display_name} </font></h1>
+                    <h1 style="color: white; "> Champion: {heroes.display_name} </h1>
                 </Header>
 
                 <Content>

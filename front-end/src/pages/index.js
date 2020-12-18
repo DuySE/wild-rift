@@ -2,13 +2,14 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import HeroDetailPage from './HeroDetailPage';
 import HeroListPage from './HeroListPage';
+import BasePage from './BasePage'
 
 
- const Routes = () => (
+const Routes = () => (
     <Switch>
         <Route path="/heroes/:name" component={HeroDetailPage} />
         <Route path="/heroes" component={HeroListPage} />
-
+        <Route path="/" component={BasePage}/>
     </Switch>
 );
 
