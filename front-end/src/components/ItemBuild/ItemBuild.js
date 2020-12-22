@@ -4,6 +4,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import 'antd/dist/antd.css';
 import {Card, Layout} from 'antd';
 import { Row, Col } from 'antd';
+import { Descriptions, Badge } from 'antd';
+
 const { Header, Content } = Layout;
 const { Meta } = Card;
 
@@ -141,129 +143,143 @@ class ItemBuild extends Component {
                 </Header>
 
                 <Content>
+                <Row>
+                    <Col span={15}>
+                <DragDropContext
+                    onDragEnd={this.onDragEnd}
+                >
 
-            <DragDropContext
-                onDragEnd={this.onDragEnd}
-            >
+                    <h3>Build Item:</h3>
+                    <Droppable droppableId="item_pool" direction="horizontal">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                            >
+                                <Row style={{ paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
+                                    {
+                                        this.getList("item_pool").map((item, index) => (
+                                            <Col span={2} >
+                                                <Draggable
+                                                    key={item.id}
+                                                    draggableId={item.id}
+                                                    index={index}>
+                                                    {(provided, snapshot) => (
+                                                        <div
+                                                            ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}
+                                                            style={getItemStyle(
+                                                                snapshot.isDragging,
+                                                                provided.draggableProps.style
+                                                            )}
+                                                        >
+                                                            <img src={item.image_url} alt={item.content} width="50" height="50"/>
+                                                        </div>
 
-                <h3>Build Item:</h3>
-                <Droppable droppableId="item_pool" direction="horizontal">
-                    {(provided, snapshot) => (
-                        <div
-                            ref={provided.innerRef}
-                        >
-                            <Row style={{backgroundColor: "orange", paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
+                                                    )}
+                                                </Draggable>
+                                            </Col>
+                                        ))
+                                    }
+                                    {provided.placeholder}
+                                </Row>
+                            </div>
+                        )}
+                    </Droppable>
+
+
+                    <h3>Physical Item:</h3>
+                    <Droppable droppableId="item_physical" direction="horizontal">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                            >
+                            <Row style={{ paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
                                 {
-                                    this.getList("item_pool").map((item, index) => (
+                                    this.getList("item_physical").map((item, index) => (
                                         <Col span={2} >
-                                            <Draggable
-                                                key={item.id}
-                                                draggableId={item.id}
-                                                index={index}>
-                                                {(provided, snapshot) => (
-                                                    <div
-                                                        ref={provided.innerRef}
-                                                        {...provided.draggableProps}
-                                                        {...provided.dragHandleProps}
-                                                        style={getItemStyle(
-                                                            snapshot.isDragging,
-                                                            provided.draggableProps.style
-                                                        )}
-                                                    >
-                                                        <img src={item.image_url} alt={item.content} width="50" height="50"/>
-                                                    </div>
+                                        <Draggable
+                                            key={item.id}
+                                            draggableId={item.id}
+                                            index={index}>
+                                            {(provided, snapshot) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    {...provided.draggableProps}
+                                                    {...provided.dragHandleProps}
+                                                    style={getItemStyle(
+                                                        snapshot.isDragging,
+                                                        provided.draggableProps.style
+                                                    )}
+                                                >
+                                                    <img src={item.image_url} alt={item.content} width="50" height="50"/>
+                                                </div>
 
-                                                )}
-                                            </Draggable>
+                                            )}
+                                        </Draggable>
                                         </Col>
                                     ))
                                 }
                                 {provided.placeholder}
                             </Row>
-                        </div>
-                    )}
-                </Droppable>
+                            </div>
+                        )}
+                    </Droppable>
 
-                <h3>Physical Item:</h3>
-                <Droppable droppableId="item_physical" direction="horizontal">
-                    {(provided, snapshot) => (
-                        <div
-                            ref={provided.innerRef}
-                        >
-                        <Row style={{backgroundColor: "blue", paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
-                            {
-                                this.getList("item_physical").map((item, index) => (
-                                    <Col span={2} >
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={item.id}
-                                        index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                style={getItemStyle(
-                                                    snapshot.isDragging,
-                                                    provided.draggableProps.style
-                                                )}
-                                            >
-                                                <img src={item.image_url} alt={item.content} width="50" height="50"/>
-                                            </div>
+                    <h3>Magical Item:</h3>
+                    <Droppable droppableId="item_magic" direction="horizontal">
+                        {(provided, snapshot) => (
+                            <div
+                                ref={provided.innerRef}
+                            >
+                                <Row style={{ paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
+                                    {
+                                        list_items && list_items.filter(item => item.type === "item_magic").map((item, index) => (
+                                            <Col span={2} >
+                                                <Draggable
+                                                    key={item._id}
+                                                    draggableId={item._id}
+                                                    index={index}>
+                                                    {(provided, snapshot) => (
+                                                        <div
+                                                            ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}
+                                                            style={getItemStyle(
+                                                                snapshot.isDragging,
+                                                                provided.draggableProps.style
+                                                            )}
+                                                        >
+                                                            <img src={item.image_url} alt={item.content} width="50" height="50"/>
+                                                        </div>
 
-                                        )}
-                                    </Draggable>
-                                    </Col>
-                                ))
-                            }
-                            {provided.placeholder}
-                        </Row>
-                        </div>
-                    )}
-                </Droppable>
+                                                    )}
+                                                </Draggable>
+                                            </Col>
+                                        ))
+                                    }
+                                    {provided.placeholder}
+                                </Row>
+                            </div>
+                        )}
+                    </Droppable>
 
-                <h3>Magical Item:</h3>
-                <Droppable droppableId="item_magic" direction="horizontal">
-                    {(provided, snapshot) => (
-                        <div
-                            ref={provided.innerRef}
-                        >
-                            <Row style={{backgroundColor: "red", paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
-                                {
-                                    list_items && list_items.filter(item => item.type === "item_magic").map((item, index) => (
-                                        <Col span={2} >
-                                            <Draggable
-                                                key={item._id}
-                                                draggableId={item._id}
-                                                index={index}>
-                                                {(provided, snapshot) => (
-                                                    <div
-                                                        ref={provided.innerRef}
-                                                        {...provided.draggableProps}
-                                                        {...provided.dragHandleProps}
-                                                        style={getItemStyle(
-                                                            snapshot.isDragging,
-                                                            provided.draggableProps.style
-                                                        )}
-                                                    >
-                                                        <img src={item.image_url} alt={item.content} width="50" height="50"/>
-                                                    </div>
+                </DragDropContext>
+                    </Col>
+                    <Col span={8} style={{marginLeft: 20}}>
+                        <Descriptions title="Build Info" bordered>
+                            <Descriptions.Item label="General Info">
+                                Gold: <strong> 4137 </strong>
+                                <br />
+                                Version: 3.4
+                                <br />
+                            </Descriptions.Item>
+                        </Descriptions>
 
-                                                )}
-                                            </Draggable>
-                                        </Col>
-                                    ))
-                                }
-                                {provided.placeholder}
-                            </Row>
-                        </div>
-                    )}
-                </Droppable>
+                    </Col>
+                </Row>
 
-            </DragDropContext>
-
-            </Content>
-
+                </Content>
             </Layout>
         )
 
