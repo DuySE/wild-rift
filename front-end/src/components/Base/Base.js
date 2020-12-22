@@ -3,15 +3,12 @@ import { withRouter } from 'react-router';
 import 'antd/dist/antd.css';
 import {Row, Col, Image, Table } from 'antd';
 import { Layout } from 'antd';
-import { Card } from 'antd';
-import { Button, Radio } from 'antd';
+import { Button } from 'antd';
 
 const { Header, Content } = Layout;
 
 
 class Base extends Component {
-
-
     render() {
         return (
             <Layout>
@@ -32,6 +29,34 @@ class Base extends Component {
                                     }} >
                                 Heroes
                             </Button>
+                            </a>
+                        </Col>
+
+                        <Col span={4} >
+                            <a href="/pick/">
+                                <Button type="primary" size={{'size': 'large'}} block
+                                        style={{ background: "#FF7F50",
+                                            borderColor: "#FF7F50" ,
+                                            height: '10em',
+                                            fontSize: '24px',
+                                            fontWeight: 'bold'
+                                        }} >
+                                    Pick Board
+                                </Button>
+                            </a>
+                        </Col>
+
+                        <Col span={4} >
+                            <a href="/items/">
+                                <Button type="primary" size={{'size': 'large'}} block
+                                        style={{ background: "#FF7F50",
+                                            borderColor: "#FF7F50" ,
+                                            height: '10em',
+                                            fontSize: '24px',
+                                            fontWeight: 'bold'
+                                        }} >
+                                    Item Board
+                                </Button>
                             </a>
                         </Col>
 

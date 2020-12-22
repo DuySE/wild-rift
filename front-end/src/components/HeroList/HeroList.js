@@ -9,7 +9,7 @@ import { Layout } from 'antd';
 const { Search } = Input;
 
 const { Meta } = Card;
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 class HeroList extends Component {
 
