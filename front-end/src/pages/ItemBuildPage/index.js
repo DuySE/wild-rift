@@ -1,1 +1,1 @@
-export { default } from '../../components/ItemBuild';
+export { default } from '../../containers/ItemBuild';

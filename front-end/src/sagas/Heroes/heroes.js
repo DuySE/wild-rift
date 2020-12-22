@@ -12,8 +12,8 @@ import {
   HEROES_CREATE_ONE,
   HEROES_GET_LIST,
   actions as HeroesActions,
-} from '../reducers/heroes';
-import heroesApis from '../apis/heroes';
+} from '../../reducers/heroes';
+import heroesApis from '../../apis/heroes';
 
 export function* handleImportHeroes({file}) {
   try {

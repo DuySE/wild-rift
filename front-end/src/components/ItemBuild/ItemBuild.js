@@ -57,6 +57,10 @@ const getListStyle = isDraggingOver => ({
 
 
 class ItemBuild extends Component {
+    componentDidMount() {
+        this.props.handleGetList()
+    }
+
     state = {
         data: {
             'item_physical': [
@@ -128,6 +132,8 @@ class ItemBuild extends Component {
 
 
     render() {
+        const { list_items } = this.props;
+
         return (
             <Layout>
                 <Header>
@@ -224,11 +230,11 @@ class ItemBuild extends Component {
                         >
                             <Row style={{backgroundColor: "red", paddingLeft: 10, height: 90}} span={12} gutter={[12, 12]}>
                                 {
-                                    this.getList("item_magic").map((item, index) => (
+                                    list_items && list_items.filter(item => item.type === "item_magic").map((item, index) => (
                                         <Col span={2} >
                                             <Draggable
-                                                key={item.id}
-                                                draggableId={item.id}
+                                                key={item._id}
+                                                draggableId={item._id}
                                                 index={index}>
                                                 {(provided, snapshot) => (
                                                     <div
