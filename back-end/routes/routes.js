@@ -12,6 +12,14 @@ router.get("/api/items/", async (req, res) => {
   }
 });
 
+router.post("/api/items/", async (req, res) => {
+  try {
+    let item = Item.create(req.body);
+    res.json(item)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+});
 
 router.get("/api/heroes/", async (req, res) => {
   try {

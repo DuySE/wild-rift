@@ -15,7 +15,6 @@ class Base extends Component {
                 <Header>
                     <h1 style={{"color":"white"}}> Wild Rift </h1>
                 </Header>
-
                 <Content>
                     <Row span={16} gutter={[16, 16]} style={{'marginTop': 8, 'marginLeft': 8 }}>
                         <Col span={4} >

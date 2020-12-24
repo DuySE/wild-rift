@@ -3,7 +3,10 @@ const { Schema } = mongoose;
 
 const itemSchema = new Schema({
     name: String,
-    profile_image: String
+    display_name: String,
+    image_url: String,
+    cost: Number,
+    type: String
 });
 
 const Item = mongoose.model("Item", itemSchema, "items");
